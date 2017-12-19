@@ -1,28 +1,28 @@
 # SuperStringIndex
 StringIndex with reference of string to calculate the offset.
 ```Swift
-struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
+public struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
     
-    var owner: Substring
-    var wrapped: String.Index
+    public var owner: Substring
+    public var wrapped: String.Index
    
 	...
 
     // Offset
-    var offset: Int {
+    public var offset: Int {
         return owner.distance(from: owner.startIndex, to: wrapped)
     }
     
-    var description: String {
+    public var description: String {
         return offset.description
     }
 
     // Strideable
-    func advanced(by n: SuperIndex.Stride) -> SuperIndex {
+    public func advanced(by n: SuperIndex.Stride) -> SuperIndex {
         return SuperIndex(owner.index(wrapped, offsetBy: n), owner)
     }
 
-    static  func +(lhs: SuperIndex, rhs: SuperIndex.Stride) -> SuperIndex {
+    public static func +(lhs: SuperIndex, rhs: SuperIndex.Stride) -> SuperIndex {
         return lhs.advanced(by: rhs)
     }
     ...

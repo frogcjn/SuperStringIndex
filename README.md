@@ -1,5 +1,29 @@
 # SuperStringIndex
-StringIndex with reference of string to calculate the offset
+StringIndex with reference of string to calculate the offset.
+```Swift
+struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
+    
+    var owner: Substring
+    var wrapped: String.Index
+   
+	...
+
+    // Offset
+    var offset: Int {
+        return owner.distance(from: owner.startIndex, to: wrapped)
+    }
+
+    // Strideable
+    func advanced(by n: SuperIndex.Stride) -> SuperIndex {
+        return SuperIndex(owner.index(wrapped, offsetBy: n), owner)
+    }
+
+    static  func +(lhs: SuperIndex, rhs: SuperIndex.Stride) -> SuperIndex {
+        return lhs.advanced(by: rhs)
+    }
+    ...
+}
+```
 
 SuperString is a special version of String. Its index keeps a reference to the string, let the index calculate the offset.
 ```Swift

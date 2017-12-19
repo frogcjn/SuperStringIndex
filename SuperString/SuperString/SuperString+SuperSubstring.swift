@@ -14,7 +14,7 @@ public struct SuperString : StringWrapperProtocol {
         self.wrapped = wrapped
     }
     
-    public typealias Index = SuperIndex
+    public typealias Index = SuperIndex<Substring>
     public typealias SubSequence = SuperSubstring
     
     public var startIndex: Index {
@@ -54,7 +54,7 @@ public struct SuperSubstring : StringWrapperProtocol {
         self.wrapped = wrapped
     }
     
-    public typealias Index = SuperIndex
+    public typealias Index = SuperIndex<Substring>
     public typealias SubSequence = SuperSubstring
     
     public var startIndex: Index {

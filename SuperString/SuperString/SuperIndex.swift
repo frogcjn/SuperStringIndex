@@ -8,23 +8,18 @@
 
 // MARK: - SuperIndex
 
-public struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
+public struct SuperIndex<Owner: Collection> : Comparable, Strideable, CustomStringConvertible {
     
-    public let owner: Substring
-    public let wrapped: String.Index
-    
-    public init(_ wrapped: String.Index, _ owner: String) {
-        self.wrapped = wrapped
-        self.owner = owner[...]
-    }
-    
-    public init(_ wrapped: String.Index, _ owner: Substring) {
+    public let owner: Owner
+    public let wrapped: Owner.Index
+
+    public init(_ wrapped: Owner.Index, _ owner: Owner) {
         self.wrapped = wrapped
         self.owner = owner
     }
     
     // Offset
-    public var offset: Int {
+    public var offset: Owner.IndexDistance {
         return owner.distance(from: owner.startIndex, to: wrapped)
     }
     
@@ -38,7 +33,7 @@ public struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
     }
     
     // Strideable
-    public typealias Stride = String.IndexDistance
+    public typealias Stride = Owner.IndexDistance
     
     public func distance(to other: SuperIndex) -> SuperIndex.Stride {
         return owner.distance(from: wrapped, to: other.wrapped)
@@ -63,8 +58,9 @@ public struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
     }
 }
 
-public extension Int {
-    init(_ superIndex:SuperIndex) {
-        self = superIndex.offset
+public extension SuperIndex where Owner == Substring {
+    init(_ wrapped: String.Index, _ owner: String) {
+        self.wrapped = wrapped
+        self.owner = owner[...]
     }
 }

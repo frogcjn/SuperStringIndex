@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6D057EDA1FE7CF2100629566 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D057ED91FE7CF2100629566 /* main.swift */; };
 		6D057EE11FE8EE3900629566 /* SuperString+SuperSubstring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D057EE01FE8EE3900629566 /* SuperString+SuperSubstring.swift */; };
-		6D057EE31FE8F01700629566 /* Range +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D057EE21FE8F01700629566 /* Range +.swift */; };
+		6D057EE31FE8F01700629566 /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D057EE21FE8F01700629566 /* Range+.swift */; };
 		6D057EE51FE8F17B00629566 /* SuperIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D057EE41FE8F17B00629566 /* SuperIndex.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +29,7 @@
 		6D057ED61FE7CF2100629566 /* SuperString */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SuperString; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D057ED91FE7CF2100629566 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6D057EE01FE8EE3900629566 /* SuperString+SuperSubstring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuperString+SuperSubstring.swift"; sourceTree = "<group>"; };
-		6D057EE21FE8F01700629566 /* Range +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range +.swift"; sourceTree = "<group>"; };
+		6D057EE21FE8F01700629566 /* Range+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+.swift"; sourceTree = "<group>"; };
 		6D057EE41FE8F17B00629566 /* SuperIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperIndex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +66,7 @@
 				6D057ED91FE7CF2100629566 /* main.swift */,
 				6D057EE41FE8F17B00629566 /* SuperIndex.swift */,
 				6D057EE01FE8EE3900629566 /* SuperString+SuperSubstring.swift */,
-				6D057EE21FE8F01700629566 /* Range +.swift */,
+				6D057EE21FE8F01700629566 /* Range+.swift */,
 			);
 			path = SuperString;
 			sourceTree = "<group>";
@@ -130,7 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D057EE11FE8EE3900629566 /* SuperString+SuperSubstring.swift in Sources */,
-				6D057EE31FE8F01700629566 /* Range +.swift in Sources */,
+				6D057EE31FE8F01700629566 /* Range+.swift in Sources */,
 				6D057EE51FE8F17B00629566 /* SuperIndex.swift in Sources */,
 				6D057EDA1FE7CF2100629566 /* main.swift in Sources */,
 			);

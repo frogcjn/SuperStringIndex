@@ -8,33 +8,36 @@
 
 // MARK: - SuperString
 
-struct SuperString : StringWrapperProtocol {
-    var wrapped: String
+public struct SuperString : StringWrapperProtocol {
+    public var wrapped: String
+    public init(wrapped: String) {
+        self.wrapped = wrapped
+    }
     
-    typealias Index = SuperIndex
-    typealias SubSequence = SuperSubstring
+    public typealias Index = SuperIndex
+    public typealias SubSequence = SuperSubstring
     
-    var startIndex: Index {
+    public var startIndex: Index {
         return SuperIndex(wrapped.startIndex, wrapped)
     }
     
-    var endIndex: Index {
+    public var endIndex: Index {
         return SuperIndex(wrapped.endIndex, wrapped)
     }
     
-    func index(after i: Index) -> Index {
+    public func index(after i: Index) -> Index {
         return SuperIndex(wrapped.index(after: i.wrapped), wrapped)
     }
     
     // BidrectionalCollection
     
-    func index(before i: Index) -> Index {
+    public func index(before i: Index) -> Index {
         return SuperIndex(wrapped.index(before: i.wrapped), wrapped)
     }
     
     // start, end, index(after i: Int) -> indices: DefaultIndices
     
-    subscript(position: Index) -> Character {
+    public subscript(position: Index) -> Character {
         return wrapped[position.wrapped]
     }
     
@@ -45,33 +48,36 @@ struct SuperString : StringWrapperProtocol {
 
 // MARK: - SuperSubstring
 
-struct SuperSubstring : StringWrapperProtocol {
-    var wrapped: Substring
+public struct SuperSubstring : StringWrapperProtocol {
+    public var wrapped: Substring
+    public init(wrapped: Substring) {
+        self.wrapped = wrapped
+    }
     
-    typealias Index = SuperIndex
-    typealias SubSequence = SuperSubstring
+    public typealias Index = SuperIndex
+    public typealias SubSequence = SuperSubstring
     
-    var startIndex: Index {
+    public var startIndex: Index {
         return SuperIndex(wrapped.startIndex, wrapped)
     }
     
-    var endIndex: Index {
+    public var endIndex: Index {
         return SuperIndex(wrapped.endIndex, wrapped)
     }
     
-    func index(after i: Index) -> Index {
+    public func index(after i: Index) -> Index {
         return SuperIndex(wrapped.index(after: i.wrapped), wrapped)
     }
     
     // BidrectionalCollection
     
-    func index(before i: Index) -> Index {
+    public func index(before i: Index) -> Index {
         return SuperIndex(wrapped.index(before: i.wrapped), wrapped)
     }
     
     // start, end, index(after i: Int) -> indices: DefaultIndices
     
-    subscript(position: Index) -> Character {
+    public subscript(position: Index) -> Character {
         return wrapped[position.wrapped]
     }
     
@@ -82,14 +88,14 @@ struct SuperSubstring : StringWrapperProtocol {
 
 // MARK: - StringWrapperProtocol
 
-protocol StringWrapperProtocol : StringProtocol {
+public protocol StringWrapperProtocol : StringProtocol {
     associatedtype Wrapped : StringProtocol
     
     var wrapped: Wrapped { get set }
     init(wrapped: Wrapped)
 }
 
-extension StringWrapperProtocol {
+public extension StringWrapperProtocol {
     
     /* Collection
 
@@ -103,13 +109,8 @@ extension StringWrapperProtocol {
     */
     
     // CustomStringConvertible
-    public var description: String {
+    var description: String {
         return wrapped.description
-    }
-    
-    // auto
-    init(wrapped: Wrapped) {
-        self.init(wrapped: wrapped)
     }
     
     

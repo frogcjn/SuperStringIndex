@@ -8,14 +8,14 @@
 
 // MARK: - Range +
 
-protocol LowerPartialRangeExpression : RangeExpression {
+public protocol LowerPartialRangeExpression : RangeExpression {
     var lowerBound : Bound { get }
     init(_ lowerBound: Bound)
     func map<T, R: LowerPartialRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T
     func map<T, R: UpperPartialRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T
 }
 
-extension LowerPartialRangeExpression {
+public extension LowerPartialRangeExpression {
     func map<T, R: LowerPartialRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T {
         return try R(transform(lowerBound))
     }
@@ -24,14 +24,14 @@ extension LowerPartialRangeExpression {
     }
 }
 
-protocol UpperPartialRangeExpression : RangeExpression {
+public protocol UpperPartialRangeExpression : RangeExpression {
     var upperBound : Bound { get }
     init(_ lowerBound: Bound)
     func map<T, R: UpperPartialRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T
     func map<T, R: LowerPartialRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T
 }
 
-extension UpperPartialRangeExpression {
+public extension UpperPartialRangeExpression {
     func map<T, R: UpperPartialRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T {
         return try R(transform(upperBound))
     }
@@ -40,14 +40,14 @@ extension UpperPartialRangeExpression {
     }
 }
 
-protocol CompletedRangeExpression : RangeExpression {
+public protocol CompletedRangeExpression : RangeExpression {
     var lowerBound : Bound { get }
     var upperBound : Bound { get }
     init(uncheckedBounds: (lower: Bound, upper: Bound))
     func map<T, R: CompletedRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T
 }
 
-extension CompletedRangeExpression {
+public extension CompletedRangeExpression {
     func map<T, R: CompletedRangeExpression>(_ transform: (Bound) throws -> T) rethrows -> R where R.Bound == T {
         let x = try transform(lowerBound)
         let y = try transform(upperBound)
@@ -75,7 +75,7 @@ extension CountableRange : CompletedRangeExpression {
 extension Range : CompletedRangeExpression {
 }
 
-extension CompletedRangeExpression {
+public extension CompletedRangeExpression {
     static func +<T, R: CompletedRangeExpression>(lhs: T, rhs: Self) -> R where R.Bound == T, T: Strideable, T.Stride == Bound {
         return rhs.map { lhs.advanced(by: $0) }
     }
@@ -90,7 +90,7 @@ extension CompletedRangeExpression {
     }
 }
 
-extension UpperPartialRangeExpression {
+public extension UpperPartialRangeExpression {
     static func +<T, R: UpperPartialRangeExpression>(lhs: T, rhs: Self) -> R where R.Bound == T, T: Strideable, T.Stride == Bound {
         return rhs.map { lhs.advanced(by: $0) }
     }
@@ -105,7 +105,7 @@ extension UpperPartialRangeExpression {
     }
 }
 
-extension LowerPartialRangeExpression {
+public extension LowerPartialRangeExpression {
     static func +<T, R: LowerPartialRangeExpression>(lhs: T, rhs: Self) -> R where R.Bound == T, T: Strideable, T.Stride == Bound {
         return rhs.map { lhs.advanced(by: $0) }
     }

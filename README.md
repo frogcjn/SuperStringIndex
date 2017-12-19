@@ -1,11 +1,15 @@
 # SuperStringIndex
 StringIndex with reference of string to calculate the offset.
 ```Swift
-public struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
+public struct SuperIndex<Owner: Collection> : Comparable, Strideable, CustomStringConvertible {
     
-    public let owner: Substring
-    public let wrapped: String.Index
-   
+    public let owner: Owner
+    public let wrapped: Owner.Index
+
+    public init(_ wrapped: Owner.Index, _ owner: Owner) {
+        self.wrapped = wrapped
+        self.owner = owner
+    }
 	...
 
     // Offset

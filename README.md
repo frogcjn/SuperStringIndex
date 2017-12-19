@@ -3,8 +3,8 @@ StringIndex with reference of string to calculate the offset.
 ```Swift
 public struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
     
-    public var owner: Substring
-    public var wrapped: String.Index
+    public let owner: Substring
+    public let wrapped: String.Index
    
 	...
 

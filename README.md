@@ -12,6 +12,10 @@ struct SuperIndex : Comparable, Strideable, CustomStringConvertible {
     var offset: Int {
         return owner.distance(from: owner.startIndex, to: wrapped)
     }
+    
+    var description: String {
+        return offset.description
+    }
 
     // Strideable
     func advanced(by n: SuperIndex.Stride) -> SuperIndex {
